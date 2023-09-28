@@ -1,19 +1,22 @@
 import { Label, Button, StyledForm } from './Form.styled';
 import { Formik, Field } from 'formik';
+import { useDispatch } from 'react-redux';
+import { addContact } from 'redux/contactsSlice';
 import * as Yup from 'yup';
 
 const validSchema = Yup.object().shape({
   name: Yup.string().min(2, 'Too short name!').required('Required!'),
-  number: Yup.number().min(5, 'Add actual phone number!'),
 });
 
-export const ContactsForm = ({ onSubmit }) => {
+export const ContactsForm = () => {
+  const dispatch = useDispatch();
+
   return (
     <Formik
       initialValues={{ name: '', number: '' }}
       validationSchema={validSchema}
       onSubmit={(values, actions) => {
-        onSubmit(values);
+        dispatch(addContact(values));
         actions.resetForm();
       }}
     >
