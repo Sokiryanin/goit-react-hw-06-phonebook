@@ -34,3 +34,30 @@ export const ContactsList = () => {
     </List>
   );
 };
+
+/**
+ * 
+ * const contactsSlice = createSlice({
+  name: 'contacts',
+  initialState: contactsInitialState,
+  reducers: {
+    addContact: {
+      reducer(state, action) {
+        state.push(action.playload);
+      },
+      prepare({ name, number }) {
+        return {
+          payload: {
+            name,
+            number,
+            id: nanoid(),
+          },
+        };
+      },
+    },
+    deleteContact(state, action) {
+      return state.filter(contact => contact.id !== action.payload);
+    },
+  },
+});
+ */
