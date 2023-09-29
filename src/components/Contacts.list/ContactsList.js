@@ -4,12 +4,13 @@ import { getContacts, getFilter } from 'redux/selectors';
 import { deleteContact } from 'redux/contactsSlice';
 
 export const ContactsList = () => {
-  const contacts = useSelector(getContacts);
-  const filter = useSelector(getFilter);
   const dispatch = useDispatch();
 
+  const contacts = useSelector(getContacts);
+  const filtered = useSelector(getFilter);
+
   function getVisibleContacts() {
-    const normalizedFilter = filter.toLowerCase();
+    const normalizedFilter = filtered.toLowerCase();
     return contacts.filter(contact =>
       contact.name.toLowerCase().includes(normalizedFilter)
     );
