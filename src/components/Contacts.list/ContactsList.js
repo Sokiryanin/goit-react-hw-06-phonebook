@@ -7,6 +7,7 @@ export const ContactsList = () => {
   const dispatch = useDispatch();
 
   const contacts = useSelector(getContacts);
+  console.log(contacts);
   const filtered = useSelector(getFilter);
 
   function getVisibleContacts() {
